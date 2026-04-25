@@ -1,242 +1,235 @@
-// Landing Page: Eco‑Friendly Wood Floor Refinishing (New York City)
-// Huggins Wood Floor Specialist — single‑file React component
-// Notes: TailwindCSS styling, clean layout, strong CTAs, vcita booking link, SEO schema.
-
 import React from "react";
+
+const studioMetrics = [
+  { label: "Projects Delivered", value: "1,200+" },
+  { label: "Years in Craft", value: "30" },
+  { label: "Bespoke Finish Samples", value: "150+" },
+  { label: "NYC / NJ / CT Coverage", value: "Tri-State" }
+];
+
+const partnershipPillars = [
+  {
+    title: "Design-Led Consultation",
+    description:
+      "We translate architectural intent into actionable wood specifications—species, finish systems, sheen, and durability profiles."
+  },
+  {
+    title: "Material Partnership",
+    description:
+      "From bespoke planks to reclaimed selections, we source and coordinate mill partners aligned with your budget, timeline, and aesthetic."
+  },
+  {
+    title: "Technical Specification Support",
+    description:
+      "We provide detail packages, installation guidance, and performance recommendations for hospitality, retail, and private residences."
+  }
+];
+
+const projectTypes = [
+  "Penthouses & Landmark Residences",
+  "Boutique Hospitality Interiors",
+  "Executive Offices & Flagship Retail"
+];
+
+const services = [
+  "On-site wood floor consulting",
+  "Material sourcing & finish mockups",
+  "Refinishing and preservation plans",
+  "Subfloor, moisture, and movement analysis",
+  "Construction-phase specification support",
+  "Post-install maintenance standards"
+];
 
 export default function RefinishingNYCPage() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      {/* Meta & SEO (for frameworks that render <head/>) */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'Huggins Wood Floor Specialist',
-            telephone: '+1-908-232-6600',
-            url: 'https://www.gogreenwoodfloors.com/book-a-virtual-consultation',
-            sameAs: [
-              'https://www.luxurywoodnyc.com/',
-              'https://newyorkcitywoodfloors.com/',
-              'https://www.gogreenwoodfloors.com/'
-            ],
-            areaServed: ['New York City','Brooklyn','Queens','The Hamptons','Northern NJ','CT'],
-            image: 'https://newyorkcitywoodfloors.com/og-image.jpg',
-            description: 'Eco-friendly, dustless wood floor refinishing for luxury homes with zero-VOC options.'
-          })
-        }}
-      />
+    <div className="min-h-screen bg-[#f6f2ec] text-[#1f1b17]">
+      <header className="sticky top-0 z-50 border-b border-[#d8cfc4]/80 bg-[#f6f2ec]/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+          <a href="#top" className="group flex items-center gap-4">
+            <span className="h-9 w-9 rounded-full border border-[#b79d7f] bg-[#d7c1a2]/50 transition-colors duration-300 group-hover:bg-[#d7c1a2]" />
+            <div>
+              <p className="font-serif text-lg tracking-wide">Huggins Wood Floor Specialist</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#6d6154]">Architectural Flooring Studio</p>
+            </div>
+          </a>
 
-      {/* Header */}
-      <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-xl bg-emerald-600" />
-            <span className="text-sm font-medium tracking-wide text-neutral-600">Huggins Wood Floor Specialist</span>
-          </div>
-          <div className="hidden items-center gap-6 md:flex">
-            <a href="#process" className="text-sm text-neutral-700 hover:text-neutral-900">Process</a>
-            <a href="#work" className="text-sm text-neutral-700 hover:text-neutral-900">Projects</a>
-            <a href="#faq" className="text-sm text-neutral-700 hover:text-neutral-900">FAQ</a>
-            <a
-              href="https://www.gogreenwoodfloors.com/book-a-virtual-consultation"
-              className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
-            >
-              Book a Consultation
-            </a>
-          </div>
-          <a href="tel:+19082326600" className="md:hidden rounded-full bg-neutral-900 px-3 py-2 text-xs font-semibold text-white">Call 908‑232‑6600</a>
+          <nav className="hidden items-center gap-8 text-sm text-[#5d5348] md:flex">
+            <a href="#studio" className="transition hover:text-[#241e18]">Studio</a>
+            <a href="#capabilities" className="transition hover:text-[#241e18]">Capabilities</a>
+            <a href="#portfolio" className="transition hover:text-[#241e18]">Portfolio</a>
+            <a href="#contact" className="transition hover:text-[#241e18]">Contact</a>
+          </nav>
+
+          <a
+            href="#contact"
+            className="rounded-full border border-[#4b3e30] px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] transition hover:bg-[#4b3e30] hover:text-[#f6f2ec] md:px-6"
+          >
+            Consultation
+          </a>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
-          <div>
-            <h1 className="text-3xl font-semibold leading-tight md:text-5xl">
-              Breathe Easy. <span className="text-emerald-700">Dustless</span>, Eco‑Friendly
-              Wood Floor Refinishing in New York City
+      <main id="top">
+        <section className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 pb-14 pt-16 lg:grid-cols-12 lg:gap-12 lg:px-10 lg:pt-24">
+          <div className="space-y-8 lg:col-span-7">
+            <p className="text-xs uppercase tracking-[0.36em] text-[#7c6f60]">For architects & interior designers</p>
+            <h1 className="max-w-3xl font-serif text-4xl leading-tight sm:text-5xl lg:text-6xl">
+              Wood flooring expertise for interiors where every detail is intentional.
             </h1>
-            <p className="mt-4 max-w-prose text-neutral-600">
-              Luxury homes deserve finishes that are healthier for your family and immaculate for your interiors.
-              Our certified craftsmen deliver museum‑grade surface prep, zero‑VOC options, and a concierge‑level experience.
+            <p className="max-w-2xl text-base leading-relaxed text-[#5d5348] sm:text-lg">
+              We partner with design teams as wood flooring specialists, technical consultants, and material collaborators—delivering refined floor systems for luxury residential and commercial environments.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+
+            <div className="flex flex-wrap gap-4">
               <a
-                href="https://www.gogreenwoodfloors.com/book-a-virtual-consultation"
-                className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
+                href="#contact"
+                className="rounded-full bg-[#2e251d] px-7 py-3 text-xs font-medium uppercase tracking-[0.2em] text-[#f6f2ec] transition hover:bg-[#493c2f]"
               >
-                Book a Virtual Consultation
+                Book Design Consultation
               </a>
               <a
-                href="#process"
-                className="rounded-xl border border-neutral-200 px-5 py-3 text-sm font-semibold text-neutral-800 hover:bg-neutral-50"
+                href="#samples"
+                className="rounded-full border border-[#7a6550] px-7 py-3 text-xs font-medium uppercase tracking-[0.2em] transition hover:bg-[#e9dfd2]"
               >
-                See Our Process
+                Request Material Samples
               </a>
-              <div className="text-xs text-neutral-500">or call <a href="tel:+19082326600" className="underline">908‑232‑6600</a></div>
-            </div>
-
-            {/* Trust badges */}
-            <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-neutral-500">
-              <span className="rounded-full border px-3 py-1">Certified Wood Flooring Inspector</span>
-              <span className="rounded-full border px-3 py-1">Zero‑VOC Finishes</span>
-              <span className="rounded-full border px-3 py-1">Dust Containment</span>
-              <span className="rounded-full border px-3 py-1">30+ Years Experience</span>
             </div>
           </div>
 
-          <div className="aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100 shadow-sm">
-            {/* Placeholder image block */}
-            <div className="flex h-full w-full items-center justify-center text-neutral-400">Project photography</div>
+          <div className="relative lg:col-span-5">
+            <div className="overflow-hidden rounded-[2.5rem] border border-[#ccb8a0] shadow-[0_30px_80px_-40px_rgba(33,27,22,0.6)]">
+              <img
+                src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1200&q=80"
+                alt="Luxury interior featuring natural wood floors"
+                className="h-[26rem] w-full object-cover transition duration-700 hover:scale-105"
+              />
+            </div>
+            <div className="absolute -bottom-7 left-6 max-w-xs rounded-3xl border border-[#cab7a1] bg-[#f8f4ee]/95 p-5 backdrop-blur">
+              <p className="text-[11px] uppercase tracking-[0.26em] text-[#716354]">Specialized focus</p>
+              <p className="mt-2 text-sm text-[#3b3229]">Custom specification and execution for warm, tactile, high-performance wood surfaces.</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Social proof */}
-      <section className="border-y bg-neutral-50">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 md:grid-cols-4">
-          {[
-            'NBC Feature',
-            'AIA & ASID CEU Instructor',
-            'Worked in 432 Park Ave',
-            'Trusted by Top Architects'
-          ].map((item) => (
-            <div key={item} className="rounded-xl border bg-white p-4 text-center text-xs text-neutral-600">
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Process */}
-      <section id="process" className="mx-auto max-w-7xl px-4 py-16">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold md:text-3xl">Our 5‑Step Dustless Refinishing Process</h2>
-          <p className="mt-3 text-neutral-600">Tailored systems for radiant heat, concrete subfloors, and high‑traffic luxury residences.</p>
-        </div>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-5">
-          {[
-            { n: '01', t: 'Evaluation & Moisture Readings', d: 'Certified inspection, species ID, and baseline RH/MC readings.' },
-            { n: '02', t: 'Protection & Containment', d: 'Zip walls, HEPA dust containment, and surface masking for art & millwork.' },
-            { n: '03', t: 'Precision Sanding', d: 'Flatness correction, edge detailing, and stair nosing refinishing.' },
-            { n: '04', t: 'Color & Finish', d: 'Custom tints and zero‑VOC finishes matched to your design intent.' },
-            { n: '05', t: 'Cure & Care', d: 'Walk‑through, maintenance plan, and optional white‑glove furniture reset.' }
-          ].map(step => (
-            <div key={step.n} className="rounded-2xl border p-5">
-              <div className="text-xs font-mono text-neutral-400">{step.n}</div>
-              <div className="mt-1 font-semibold">{step.t}</div>
-              <div className="mt-2 text-sm text-neutral-600">{step.d}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Highlight banner */}
-      <section className="mx-auto max-w-7xl px-4">
-        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 to-emerald-700 p-8 text-white md:p-10">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <div>
-              <h3 className="text-xl font-semibold">Zero‑VOC. Low Odor. Family‑Safe.</h3>
-              <p className="mt-2 max-w-2xl text-sm opacity-90">We were among the first in the U.S. to adopt zero‑VOC systems—ideal for families, pets, and allergy‑sensitive environments.</p>
-            </div>
-            <a
-              href="https://www.gogreenwoodfloors.com/book-a-virtual-consultation"
-              className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-emerald-700 hover:bg-neutral-50"
-            >
-              Check Dates & Times
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio snapshots */}
-      <section id="work" className="mx-auto max-w-7xl px-4 py-16">
-        <h2 className="text-2xl font-semibold md:text-3xl">Recent Projects</h2>
-        <p className="mt-2 text-neutral-600">A selection of refinishing work from Manhattan penthouses to historic brownstones.</p>
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {[1,2,3].map(i => (
-            <div key={i} className="aspect-[4/3] rounded-2xl bg-neutral-100" />
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="border-y bg-neutral-50">
-        <div className="mx-auto max-w-7xl px-4 py-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">Kind Words from Clients</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {[
-              {
-                q: 'The team protected our art, finished early, and the air smelled clean—no lingering odors.',
-                a: 'Tribeca Penthouse'
-              },
-              {
-                q: 'Their inspector‑level knowledge solved a moisture issue others missed. Flawless finish.',
-                a: 'Upper East Side Townhouse'
-              },
-              {
-                q: 'White‑glove experience from start to finish. We booked our next project immediately.',
-                a: 'Greenwich, CT Residence'
-              }
-            ].map((t, idx) => (
-              <figure key={idx} className="rounded-2xl border bg-white p-6">
-                <blockquote className="text-sm text-neutral-700">“{t.q}”</blockquote>
-                <figcaption className="mt-4 text-xs text-neutral-500">— {t.a}</figcaption>
-              </figure>
+        <section id="studio" className="border-y border-[#ddd2c5] bg-[#f1e9df]">
+          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-12 sm:grid-cols-4 lg:px-10">
+            {studioMetrics.map((item) => (
+              <article key={item.label} className="space-y-1 border-l border-[#c6b6a2] pl-4">
+                <p className="font-serif text-3xl text-[#2c241d]">{item.value}</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-[#6f6458]">{item.label}</p>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQs */}
-      <section id="faq" className="mx-auto max-w-4xl px-4 py-16">
-        <h2 className="text-2xl font-semibold md:text-3xl">FAQ</h2>
-        <div className="mt-6 space-y-4">
-          <details className="group rounded-2xl border p-5">
-            <summary className="cursor-pointer list-none font-semibold">Do zero‑VOC finishes actually last?</summary>
-            <p className="mt-2 text-sm text-neutral-600">Yes. Modern waterborne, zero‑VOC systems deliver superb durability with proper prep and cure. We specify by traffic level and sheen to match performance goals.</p>
-          </details>
-          <details className="group rounded-2xl border p-5">
-            <summary className="cursor-pointer list-none font-semibold">Will there be dust or odor?</summary>
-            <p className="mt-2 text-sm text-neutral-600">We use HEPA containment and low‑odor products. Odor is minimal and typically dissipates within hours depending on ventilation.</p>
-          </details>
-          <details className="group rounded-2xl border p-5">
-            <summary className="cursor-pointer list-none font-semibold">Can you match our existing floors?</summary>
-            <p className="mt-2 text-sm text-neutral-600">We create on‑site color samples for approval and explain tolerances up front—exact matches cannot be guaranteed, but our tints are renowned for seamless transitions.</p>
-          </details>
-        </div>
-      </section>
-
-      {/* CTA Footer */}
-      <section className="mx-auto max-w-7xl px-4 pb-20">
-        <div className="rounded-3xl border p-8 text-center md:p-12">
-          <h3 className="text-xl font-semibold">Ready to Refine Your Floors?</h3>
-          <p className="mt-2 text-sm text-neutral-600">Schedule a zero‑pressure virtual consultation. We’ll review your space, goals, and timeline.</p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="https://www.gogreenwoodfloors.com/book-a-virtual-consultation"
-              className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
-            >
-              Book Now
-            </a>
-            <a href="tel:+19082326600" className="rounded-xl border px-5 py-3 text-sm font-semibold">Call 908‑232‑6600</a>
+        <section id="capabilities" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-[#7e6e5f]">Partnership model</p>
+              <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight sm:text-4xl">
+                We integrate with your team from concept through final coat.
+              </h2>
+            </div>
+            <div className="space-y-6">
+              {partnershipPillars.map((pillar) => (
+                <article key={pillar.title} className="rounded-3xl border border-[#d4c6b6] bg-[#fbf8f3] p-7 transition hover:-translate-y-0.5 hover:border-[#b79c82]">
+                  <h3 className="font-serif text-2xl">{pillar.title}</h3>
+                  <p className="mt-3 text-[#5c5247]">{pillar.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
 
-      <footer className="border-t">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row">
-          <p className="text-xs text-neutral-500">© {new Date().getFullYear()} Huggins Wood Floor Specialist · Eco‑friendly Wood Floor Refinishing</p>
-          <nav className="flex items-center gap-4 text-xs text-neutral-500">
-            <a href="#" className="hover:text-neutral-800">Privacy</a>
-            <a href="#" className="hover:text-neutral-800">Terms</a>
-            <a href="https://www.luxurywoodnyc.com/book-a-virtual-consultation" className="hover:text-neutral-800">Luxury Wood NYC</a>
-          </nav>
-        </div>
-      </footer>
+          <div id="samples" className="mt-16 grid gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <img
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80"
+                alt="Architectural detail with curated wood materials"
+                className="h-full min-h-[18rem] w-full rounded-[2.3rem] object-cover"
+              />
+            </div>
+            <aside className="flex flex-col justify-between rounded-[2.3rem] border border-[#d2c3b1] bg-[#efe5d8] p-8 lg:col-span-5">
+              <div>
+                <p className="text-xs uppercase tracking-[0.26em] text-[#6d5c4a]">Specification support</p>
+                <h3 className="mt-3 font-serif text-3xl leading-tight">Need finish schedules, sample kits, or performance guidance?</h3>
+                <ul className="mt-5 space-y-2 text-sm text-[#4f463d]">
+                  {services.map((service) => (
+                    <li key={service}>• {service}</li>
+                  ))}
+                </ul>
+              </div>
+              <a
+                href="#contact"
+                className="mt-8 inline-flex w-fit rounded-full border border-[#4b3e30] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] transition hover:bg-[#4b3e30] hover:text-[#f7f2ea]"
+              >
+                Request Specification Support
+              </a>
+            </aside>
+          </div>
+        </section>
+
+        <section id="portfolio" className="bg-[#1f1a16] px-6 py-20 text-[#e9dfd2] lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-xs uppercase tracking-[0.28em] text-[#b8a896]">Select interiors</p>
+                <h2 className="mt-3 font-serif text-3xl sm:text-4xl">Refined work across private and commercial spaces.</h2>
+              </div>
+              <a
+                href="#contact"
+                className="text-xs uppercase tracking-[0.2em] text-[#ddc8b2] underline decoration-[#8e7963] underline-offset-8 transition hover:text-[#f2e6d8]"
+              >
+                Schedule a portfolio review
+              </a>
+            </div>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {projectTypes.map((project, index) => (
+                <article key={project} className="group overflow-hidden rounded-3xl border border-[#4a4037]">
+                  <img
+                    src={`https://images.unsplash.com/photo-${index === 0 ? "1512918728675-ed5a9ecdebfd" : index === 1 ? "1497366754035-f200968a6e72" : "1441986300917-64674bd600d8"}?auto=format&fit=crop&w=1000&q=80`}
+                    alt={project}
+                    className="h-64 w-full object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="p-5">
+                    <h3 className="font-serif text-2xl">{project}</h3>
+                    <p className="mt-2 text-sm text-[#b6a999]">Materially rich, technically precise, and coordinated to demanding construction timelines.</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="mx-auto max-w-5xl px-6 py-20 text-center lg:px-10">
+          <p className="text-xs uppercase tracking-[0.3em] text-[#7d6d5b]">Collaborate with us</p>
+          <h2 className="mt-4 font-serif text-3xl sm:text-5xl">Let&apos;s specify flooring that elevates the entire interior narrative.</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-[#5f5448]">
+            Share drawings, inspirations, or finish requirements. We&apos;ll provide consultation, curated samples, and technical support tailored to your project team.
+          </p>
+
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="mailto:hello@gogreenwoodfloors.com?subject=Design%20Consultation"
+              className="w-full rounded-full bg-[#2e251d] px-7 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#f5eee4] transition hover:bg-[#4a3c2e] sm:w-auto"
+            >
+              Consultation Inquiry
+            </a>
+            <a
+              href="mailto:hello@gogreenwoodfloors.com?subject=Sample%20Request"
+              className="w-full rounded-full border border-[#6f5b46] px-7 py-4 text-xs font-semibold uppercase tracking-[0.2em] transition hover:bg-[#ebdfd2] sm:w-auto"
+            >
+              Request Samples
+            </a>
+            <a
+              href="tel:+19082326600"
+              className="w-full rounded-full border border-[#6f5b46] px-7 py-4 text-xs font-semibold uppercase tracking-[0.2em] transition hover:bg-[#ebdfd2] sm:w-auto"
+            >
+              Call +1 (908) 232-6600
+            </a>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
