@@ -3,7 +3,7 @@
 Next.js + Tailwind CSS site for Huggins Wood Floor Specialist.
 
 ## Pages
-- `/` — homepage: editorial, image-led layout (full-bleed hero, service tiles, the Huggins method, project carousel, testimonials, architects & designers, consultation CTA)
+- `/` — homepage: sells wood floors in an editorial, image-led layout (hero, collections, patterns, finishes, sample-to-floor process, projects, testimonials, trade, samples CTA)
 - `/eco-refinishing` — the original eco-friendly refinishing landing page
 
 ## Photography

@@ -8,6 +8,7 @@ const tones = {
   white: ["#E6DCCB", "#C9B9A0"],
   walnut: ["#7A5638", "#4A3322"],
   ash: ["#D2C3A8", "#A89272"],
+  ebony: ["#3A2E26", "#1E1814"],
 };
 
 export default function Photo({ src, alt, tone = "oak", className = "", children }) {
