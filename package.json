@@ -1,14 +1,17 @@
 {
-  "name": "huggins-refinishing-nyc",
-  "version": "1.0.0",
+  "name": "huggins-luxury-wood-floors",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
+    "seo": "node scripts/generate-seo.js",
+    "predev": "npm run seo",
     "dev": "next dev",
+    "prebuild": "npm run seo",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "14.2.3",
+    "next": "^14.2.35",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },

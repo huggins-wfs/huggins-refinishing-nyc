@@ -1,242 +1,188 @@
-// Landing Page: Eco‑Friendly Wood Floor Refinishing (New York City)
-// Huggins Wood Floor Specialist — single‑file React component
-// Notes: TailwindCSS styling, clean layout, strong CTAs, vcita booking link, SEO schema.
+import Link from "next/link";
+import Layout, { Seo, Cta, Faq } from "../components/Layout";
+import WoodFloor from "../components/WoodFloor";
+import FloorStudio from "../components/FloorStudio";
+import { business, city, services, floors, process, faqs, websiteSchema, faqSchema } from "../lib/site";
 
-import React from "react";
+export default function Home() {
+  const title = `Luxury Wood Flooring in ${city.name} | ${business.name}`;
+  const description = `Wide-plank oak, herringbone, chevron and custom parquet for ${city.name} homes. Supplied, installed and finished by a Certified Wood Flooring Inspector with ${business.yearsExperience} years of experience.`;
+  const quick = [
+    ["What we do", "Supply, install, refinish and restore luxury wood floors"],
+    ["Where", `${city.name}${city.areas.length ? `, including ${city.areas.slice(0, 4).map((a) => a.name).join(", ")}` : " and surrounding communities"}`],
+    ["Floors", "Wide-plank oak, walnut, herringbone, chevron, parquet, reclaimed"],
+    ["Finishes", "Zero-VOC waterborne and hardwax oil, applied with dust containment"],
+    ["Experience", `${business.yearsExperience} years, led by a Certified Wood Flooring Inspector`],
+    ["How to start", `Book a virtual consultation or call ${business.phoneDisplay}`],
+  ];
 
-export default function RefinishingNYCPage() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      {/* Meta & SEO (for frameworks that render <head/>) */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'Huggins Wood Floor Specialist',
-            telephone: '+1-908-232-6600',
-            url: 'https://www.gogreenwoodfloors.com/book-a-virtual-consultation',
-            sameAs: [
-              'https://www.luxurywoodnyc.com/',
-              'https://newyorkcitywoodfloors.com/',
-              'https://www.gogreenwoodfloors.com/'
-            ],
-            areaServed: ['New York City','Brooklyn','Queens','The Hamptons','Northern NJ','CT'],
-            image: 'https://newyorkcitywoodfloors.com/og-image.jpg',
-            description: 'Eco-friendly, dustless wood floor refinishing for luxury homes with zero-VOC options.'
-          })
-        }}
-      />
-
-      {/* Header */}
-      <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-xl bg-emerald-600" />
-            <span className="text-sm font-medium tracking-wide text-neutral-600">Huggins Wood Floor Specialist</span>
-          </div>
-          <div className="hidden items-center gap-6 md:flex">
-            <a href="#process" className="text-sm text-neutral-700 hover:text-neutral-900">Process</a>
-            <a href="#work" className="text-sm text-neutral-700 hover:text-neutral-900">Projects</a>
-            <a href="#faq" className="text-sm text-neutral-700 hover:text-neutral-900">FAQ</a>
-            <a
-              href="https://www.gogreenwoodfloors.com/book-a-virtual-consultation"
-              className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
-            >
-              Book a Consultation
-            </a>
-          </div>
-          <a href="tel:+19082326600" className="md:hidden rounded-full bg-neutral-900 px-3 py-2 text-xs font-semibold text-white">Call 908‑232‑6600</a>
-        </div>
-      </header>
+    <Layout>
+      <Seo title={title} description={description} schema={[websiteSchema(), faqSchema(faqs)]} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
+      <section className="relative isolate overflow-hidden bg-ink text-bone">
+        {business.images.hero ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={business.images.hero} alt={`Luxury wood floor in a ${city.name} home`} fetchPriority="high" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+        ) : (
+          <WoodFloor pattern="herringbone" tone="smoked" width="wide" sheen="satin" label={`Herringbone oak floor, ${city.name}`} className="absolute inset-0 -z-10 h-full w-full" />
+        )}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
+        <div className="wrap py-24 md:py-36">
+          <p className="eyebrow-light">{business.name} · {city.name}</p>
+          <h1 className="mt-6 max-w-3xl text-5xl leading-[1.05] md:text-7xl">
+            Luxury wood flooring in {city.name}, <em className="text-brass-light">made for your home.</em>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-bone/80">
+            We supply, install and finish wide-plank, herringbone and custom parquet floors for {city.homes}. One team, from first sample to final coat.
+          </p>
+          <div className="mt-9"><Cta /></div>
+        </div>
+        <ul className="wrap grid grid-cols-2 gap-px border-t border-bone/15 pb-0 text-xs text-bone/75 md:grid-cols-4">
+          {business.credentials.map((c) => (
+            <li key={c} className="py-5 pr-4 uppercase tracking-widest">{c}</li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Direct answers: the block search and AI engines quote */}
+      <section aria-labelledby="glance" className="border-b border-ink/10 py-20 md:py-24">
+        <div className="wrap grid gap-10 lg:grid-cols-[1fr_2fr]">
           <div>
-            <h1 className="text-3xl font-semibold leading-tight md:text-5xl">
-              Breathe Easy. <span className="text-emerald-700">Dustless</span>, Eco‑Friendly
-              Wood Floor Refinishing in New York City
-            </h1>
-            <p className="mt-4 max-w-prose text-neutral-600">
-              Luxury homes deserve finishes that are healthier for your family and immaculate for your interiors.
-              Our certified craftsmen deliver museum‑grade surface prep, zero‑VOC options, and a concierge‑level experience.
+            <p className="eyebrow">At a glance</p>
+            <h2 id="glance" className="mt-4 text-4xl md:text-5xl">{city.name}&rsquo;s wood floor specialist</h2>
+            <p className="mt-5 leading-relaxed text-ink/75">
+              {business.name} designs, supplies and installs luxury wood flooring in {city.name}. The company also refinishes and restores existing floors and provides certified inspections for owners, architects and designers.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href="https://www.gogreenwoodfloors.com/book-a-virtual-consultation"
-                className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
-              >
-                Book a Virtual Consultation
-              </a>
-              <a
-                href="#process"
-                className="rounded-xl border border-neutral-200 px-5 py-3 text-sm font-semibold text-neutral-800 hover:bg-neutral-50"
-              >
-                See Our Process
-              </a>
-              <div className="text-xs text-neutral-500">or call <a href="tel:+19082326600" className="underline">908‑232‑6600</a></div>
-            </div>
-
-            {/* Trust badges */}
-            <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-neutral-500">
-              <span className="rounded-full border px-3 py-1">Certified Wood Flooring Inspector</span>
-              <span className="rounded-full border px-3 py-1">Zero‑VOC Finishes</span>
-              <span className="rounded-full border px-3 py-1">Dust Containment</span>
-              <span className="rounded-full border px-3 py-1">30+ Years Experience</span>
-            </div>
           </div>
-
-          <div className="aspect-[4/3] w-full overflow-hidden rounded-3xl bg-neutral-100 shadow-sm">
-            {/* Placeholder image block */}
-            <div className="flex h-full w-full items-center justify-center text-neutral-400">Project photography</div>
-          </div>
+          <dl className="grid gap-px self-start bg-ink/10 sm:grid-cols-2">
+            {quick.map(([k, v]) => (
+              <div key={k} className="bg-bone p-6">
+                <dt className="eyebrow">{k}</dt>
+                <dd className="mt-2 leading-snug">{v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* Social proof */}
-      <section className="border-y bg-neutral-50">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 md:grid-cols-4">
-          {[
-            'NBC Feature',
-            'AIA & ASID CEU Instructor',
-            'Worked in 432 Park Ave',
-            'Trusted by Top Architects'
-          ].map((item) => (
-            <div key={item} className="rounded-xl border bg-white p-4 text-center text-xs text-neutral-600">
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Process */}
-      <section id="process" className="mx-auto max-w-7xl px-4 py-16">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold md:text-3xl">Our 5‑Step Dustless Refinishing Process</h2>
-          <p className="mt-3 text-neutral-600">Tailored systems for radiant heat, concrete subfloors, and high‑traffic luxury residences.</p>
-        </div>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-5">
-          {[
-            { n: '01', t: 'Evaluation & Moisture Readings', d: 'Certified inspection, species ID, and baseline RH/MC readings.' },
-            { n: '02', t: 'Protection & Containment', d: 'Zip walls, HEPA dust containment, and surface masking for art & millwork.' },
-            { n: '03', t: 'Precision Sanding', d: 'Flatness correction, edge detailing, and stair nosing refinishing.' },
-            { n: '04', t: 'Color & Finish', d: 'Custom tints and zero‑VOC finishes matched to your design intent.' },
-            { n: '05', t: 'Cure & Care', d: 'Walk‑through, maintenance plan, and optional white‑glove furniture reset.' }
-          ].map(step => (
-            <div key={step.n} className="rounded-2xl border p-5">
-              <div className="text-xs font-mono text-neutral-400">{step.n}</div>
-              <div className="mt-1 font-semibold">{step.t}</div>
-              <div className="mt-2 text-sm text-neutral-600">{step.d}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Highlight banner */}
-      <section className="mx-auto max-w-7xl px-4">
-        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 to-emerald-700 p-8 text-white md:p-10">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <div>
-              <h3 className="text-xl font-semibold">Zero‑VOC. Low Odor. Family‑Safe.</h3>
-              <p className="mt-2 max-w-2xl text-sm opacity-90">We were among the first in the U.S. to adopt zero‑VOC systems—ideal for families, pets, and allergy‑sensitive environments.</p>
-            </div>
-            <a
-              href="https://www.gogreenwoodfloors.com/book-a-virtual-consultation"
-              className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-emerald-700 hover:bg-neutral-50"
-            >
-              Check Dates & Times
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio snapshots */}
-      <section id="work" className="mx-auto max-w-7xl px-4 py-16">
-        <h2 className="text-2xl font-semibold md:text-3xl">Recent Projects</h2>
-        <p className="mt-2 text-neutral-600">A selection of refinishing work from Manhattan penthouses to historic brownstones.</p>
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {[1,2,3].map(i => (
-            <div key={i} className="aspect-[4/3] rounded-2xl bg-neutral-100" />
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="border-y bg-neutral-50">
-        <div className="mx-auto max-w-7xl px-4 py-16">
-          <h2 className="text-2xl font-semibold md:text-3xl">Kind Words from Clients</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {[
-              {
-                q: 'The team protected our art, finished early, and the air smelled clean—no lingering odors.',
-                a: 'Tribeca Penthouse'
-              },
-              {
-                q: 'Their inspector‑level knowledge solved a moisture issue others missed. Flawless finish.',
-                a: 'Upper East Side Townhouse'
-              },
-              {
-                q: 'White‑glove experience from start to finish. We booked our next project immediately.',
-                a: 'Greenwich, CT Residence'
-              }
-            ].map((t, idx) => (
-              <figure key={idx} className="rounded-2xl border bg-white p-6">
-                <blockquote className="text-sm text-neutral-700">“{t.q}”</blockquote>
-                <figcaption className="mt-4 text-xs text-neutral-500">— {t.a}</figcaption>
-              </figure>
+      {/* Collections */}
+      <section id="flooring" className="py-20 md:py-28">
+        <div className="wrap">
+          <p className="eyebrow">The floors</p>
+          <h2 className="mt-4 max-w-2xl text-4xl md:text-5xl">Four ways to a remarkable floor</h2>
+          <div className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {floors.map((f) => (
+              <Link key={f.slug} href={`/flooring/${f.slug}`} className="group block">
+                <div className="overflow-hidden">
+                  <WoodFloor pattern={f.pattern} tone={f.tone} width={f.width} className="aspect-[3/4] w-full transition-transform duration-700 group-hover:scale-105" />
+                </div>
+                <h3 className="mt-5 text-2xl">{f.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">{f.summary.split(". ")[0]}.</p>
+                <span className="mt-3 inline-block border-b border-brass pb-0.5 text-sm font-semibold text-brass">Explore</span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQs */}
-      <section id="faq" className="mx-auto max-w-4xl px-4 py-16">
-        <h2 className="text-2xl font-semibold md:text-3xl">FAQ</h2>
-        <div className="mt-6 space-y-4">
-          <details className="group rounded-2xl border p-5">
-            <summary className="cursor-pointer list-none font-semibold">Do zero‑VOC finishes actually last?</summary>
-            <p className="mt-2 text-sm text-neutral-600">Yes. Modern waterborne, zero‑VOC systems deliver superb durability with proper prep and cure. We specify by traffic level and sheen to match performance goals.</p>
-          </details>
-          <details className="group rounded-2xl border p-5">
-            <summary className="cursor-pointer list-none font-semibold">Will there be dust or odor?</summary>
-            <p className="mt-2 text-sm text-neutral-600">We use HEPA containment and low‑odor products. Odor is minimal and typically dissipates within hours depending on ventilation.</p>
-          </details>
-          <details className="group rounded-2xl border p-5">
-            <summary className="cursor-pointer list-none font-semibold">Can you match our existing floors?</summary>
-            <p className="mt-2 text-sm text-neutral-600">We create on‑site color samples for approval and explain tolerances up front—exact matches cannot be guaranteed, but our tints are renowned for seamless transitions.</p>
-          </details>
-        </div>
-      </section>
+      <FloorStudio />
 
-      {/* CTA Footer */}
-      <section className="mx-auto max-w-7xl px-4 pb-20">
-        <div className="rounded-3xl border p-8 text-center md:p-12">
-          <h3 className="text-xl font-semibold">Ready to Refine Your Floors?</h3>
-          <p className="mt-2 text-sm text-neutral-600">Schedule a zero‑pressure virtual consultation. We’ll review your space, goals, and timeline.</p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="https://www.gogreenwoodfloors.com/book-a-virtual-consultation"
-              className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
-            >
-              Book Now
-            </a>
-            <a href="tel:+19082326600" className="rounded-xl border px-5 py-3 text-sm font-semibold">Call 908‑232‑6600</a>
+      {/* Services */}
+      <section id="services" className="py-20 md:py-28">
+        <div className="wrap">
+          <p className="eyebrow">Services</p>
+          <h2 className="mt-4 max-w-2xl text-4xl md:text-5xl">Everything your floor needs, from one team</h2>
+          <div className="mt-12 grid gap-px bg-ink/10 md:grid-cols-2">
+            {services.map((s) => (
+              <Link key={s.slug} href={`/services/${s.slug}`} className="group flex flex-col bg-bone p-8 transition-colors hover:bg-sand md:p-10">
+                <h3 className="text-3xl">{s.name}</h3>
+                <p className="mt-3 flex-1 leading-relaxed text-ink/70">{s.summary.split(". ")[0]}.</p>
+                <span className="mt-5 text-sm font-semibold text-brass">Learn more <span aria-hidden className="inline-block transition-transform group-hover:translate-x-1">→</span></span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <footer className="border-t">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row">
-          <p className="text-xs text-neutral-500">© {new Date().getFullYear()} Huggins Wood Floor Specialist · Eco‑friendly Wood Floor Refinishing</p>
-          <nav className="flex items-center gap-4 text-xs text-neutral-500">
-            <a href="#" className="hover:text-neutral-800">Privacy</a>
-            <a href="#" className="hover:text-neutral-800">Terms</a>
-            <a href="https://www.luxurywoodnyc.com/book-a-virtual-consultation" className="hover:text-neutral-800">Luxury Wood NYC</a>
-          </nav>
+      {/* Process */}
+      <section id="process" className="bg-sand py-20 md:py-28">
+        <div className="wrap">
+          <p className="eyebrow">How it works</p>
+          <h2 className="mt-4 max-w-2xl text-4xl md:text-5xl">Five calm steps</h2>
+          <ol className="mt-12 grid gap-8 md:grid-cols-5">
+            {process.map((p) => (
+              <li key={p.n} className="border-t border-ink/25 pt-5">
+                <span className="font-display text-3xl text-brass">{p.n}</span>
+                <h3 className="mt-2 font-sans text-base font-semibold">{p.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">{p.d}</p>
+              </li>
+            ))}
+          </ol>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      {/* Local */}
+      <section id="local" className="py-20 md:py-28">
+        <div className="wrap grid gap-12 lg:grid-cols-2">
+          <div>
+            <p className="eyebrow">Local knowledge</p>
+            <h2 className="mt-4 text-4xl md:text-5xl">Built for {city.name} homes</h2>
+            <p className="mt-6 leading-relaxed text-ink/75">{city.climate}</p>
+            <p className="mt-4 leading-relaxed text-ink/75">{city.logistics}</p>
+          </div>
+          {city.areas.length > 0 && (
+            <div>
+              <h3 className="eyebrow !font-sans">Where we work</h3>
+              <ul className="mt-5 grid grid-cols-2 gap-px bg-ink/10">
+                {city.areas.map((a) => (
+                  <li key={a.slug} className="bg-bone">
+                    {a.note ? (
+                      <Link href={`/areas/${a.slug}`} className="flex min-h-[56px] items-center justify-between px-5 font-display text-xl hover:bg-sand">{a.name}<span aria-hidden className="text-brass">→</span></Link>
+                    ) : (
+                      <span className="flex min-h-[56px] items-center px-5 font-display text-xl">{a.name}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {city.testimonials.length > 0 && (
+        <section className="bg-espresso py-20 text-bone md:py-28">
+          <div className="wrap">
+            <p className="eyebrow-light">Clients</p>
+            <div className="mt-8 grid gap-12 md:grid-cols-2">
+              {city.testimonials.map((t) => (
+                <figure key={t.source}>
+                  <blockquote className="font-display text-3xl italic leading-snug">&ldquo;{t.quote}&rdquo;</blockquote>
+                  <figcaption className="mt-5 text-xs uppercase tracking-luxe text-brass-light">{t.source}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <Faq items={faqs} heading={`Wood flooring in ${city.name}, answered`} />
+      <Closing />
+    </Layout>
+  );
+}
+
+export function Closing() {
+  return (
+    <section className="bg-sand py-20 md:py-24">
+      <div className="wrap flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+        <div>
+          <h2 className="text-4xl md:text-5xl">Begin with a conversation</h2>
+          <p className="mt-3 max-w-xl text-ink/75">A relaxed virtual consultation about your space, your goals and your timeline. No obligation.</p>
+        </div>
+        <Cta light />
+      </div>
+    </section>
   );
 }

@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { @apply bg-bone text-ink font-sans antialiased; }
+  h1, h2, h3 { @apply font-display; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-brass-light; }
+  summary::-webkit-details-marker { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-7xl px-5 md:px-8; }
+  .eyebrow { @apply text-[0.7rem] font-semibold uppercase tracking-luxe text-brass; }
+  .eyebrow-light { @apply text-[0.7rem] font-semibold uppercase tracking-luxe text-brass-light; }
+  .btn { @apply inline-flex min-h-[48px] items-center justify-center px-7 py-3 text-sm font-semibold tracking-wide transition-colors; }
+  .btn-brass { @apply btn bg-brass-light text-ink hover:bg-[#d8b886]; }
+  .btn-ink { @apply btn bg-ink text-bone hover:bg-espresso; }
+  .btn-ghost { @apply btn border border-ink/25 text-ink hover:border-ink; }
+  .btn-ghost-light { @apply btn border border-bone/30 text-bone hover:border-bone; }
+  .rule { @apply h-px w-12 bg-brass-light; }
+  .prose-lux p { @apply mt-4 leading-relaxed text-ink/75; }
+}
