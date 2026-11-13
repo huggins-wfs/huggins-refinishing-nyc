@@ -8,7 +8,7 @@
  * Running many city sites from this one repo? Leave this file alone and
  * set the SITE_CITY environment variable on each deployment instead.
  */
-const ACTIVE_CITY = "new-york-city";
+const ACTIVE_CITY = "manhattan";
 
 const cities = require("./data/cities");
 
@@ -32,6 +32,7 @@ const business = {
   sameAs: [
     "https://www.luxurywoodnyc.com/",
     "https://newyorkcitywoodfloors.com/",
+    "https://manhattanwoodflooring.com/",
     "https://www.gogreenwoodfloors.com/",
   ],
   // Optional photography. Drop files in /public and put paths here,

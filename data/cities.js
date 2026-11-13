@@ -118,6 +118,24 @@ const profiles = {
   },
 };
 
+// Manhattan: its own site and domain, sharing New York's building knowledge.
+const nyc = profiles["new-york-city"];
+const manhattanOnly = ["Upper East Side", "Upper West Side", "Tribeca", "West Village", "SoHo"];
+profiles.manhattan = {
+  ...nyc,
+  name: "Manhattan",
+  short: "Manhattan",
+  url: "https://manhattanwoodflooring.com",
+  homes: "prewar co-ops, townhouses, lofts and new-development condominiums",
+  logistics:
+    "Most Manhattan buildings require a certificate of insurance, an alteration agreement, protected common areas and booked freight-elevator time. We prepare that paperwork with your managing agent and schedule the work inside the building's permitted hours.",
+  areas: [
+    ...nyc.areas.filter((a) => manhattanOnly.includes(a.name)),
+    { name: "Chelsea" }, { name: "Greenwich Village" }, { name: "Midtown" },
+  ],
+  localFaqs: nyc.localFaqs.map((f) => ({ ...f, q: f.q.replace("New York City", "Manhattan") })),
+};
+
 /** Fills in defaults so a profile only needs the fields you actually know. */
 function finish(key, p) {
   const name = p.name;
